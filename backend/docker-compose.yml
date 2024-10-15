@@ -1,0 +1,25 @@
+version: '3'
+services:
+  backend:
+    build: ./backend
+    ports:
+      - "8080:8080"
+    depends_on:
+      - db
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:mysql://db:3306/device_management
+      - SPRING_DATASOURCE_USERNAME=servicemanager
+      - SPRING_DATASOURCE_PASSWORD=Ggolfer838a90d4c3f7c14b47200912
+
+  db:
+    image: mysql:8.0
+    environment:
+      - MYSQL_DATABASE=device_management
+      - MYSQL_USER=servicemanager
+      - MYSQL_PASSWORD=Ggolfer838a90d4c3f7c14b47200912
+      - MYSQL_ROOT_PASSWORD="555484097Golfer484097"
+    volumes:
+      - mysql-data:/var/lib/mysql
+
+volumes:
+  mysql-data:
